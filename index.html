@@ -49,7 +49,7 @@ body {
   }
 }
 
-/* CONTAINER FIX */
+/* CONTAINER */
 .container {
   position: relative;
   z-index: 2;
@@ -99,6 +99,7 @@ button {
   background: white;
   color: black;
   position: fixed;
+  transition: 0.2s;
 }
 </style>
 </head>
@@ -144,18 +145,24 @@ function createLove() {
 
 setInterval(createLove, 300);
 
-/* BUTTON NO KABUR (FIX BOUNDARY) */
+/* BUTTON NO KABUR (ANTI NIMPA TEXT) */
 function no() {
   const btn = document.getElementById("noBtn");
 
-  const maxX = window.innerWidth - btn.offsetWidth;
-  const maxY = window.innerHeight - btn.offsetHeight;
+  const paddingTop = 250; // area aman text
+  const paddingBottom = 80;
 
-  btn.style.left = Math.random() * maxX + "px";
-  btn.style.top = Math.random() * maxY + "px";
+  const maxX = window.innerWidth - btn.offsetWidth;
+  const maxY = window.innerHeight - btn.offsetHeight - paddingBottom;
+
+  const randomX = Math.random() * maxX;
+  const randomY = paddingTop + Math.random() * (maxY - paddingTop);
+
+  btn.style.left = randomX + "px";
+  btn.style.top = randomY + "px";
 }
 
-/* BUTTON YES (FIX CENTER) */
+/* BUTTON YES */
 function yes() {
   document.body.innerHTML = `
     <div style="
